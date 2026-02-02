@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-test
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  
+  source:
+    repoURL: https://github.com/edgewood432/k3s-homelab.git
+    targetRevision: main
+    path: argocd-apps/apps/nginx-test
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+    
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
