@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: monitoring
+
+resources:
+  - namespace.yaml
+  - prometheus/serviceaccount.yaml
+  - prometheus/clusterrole.yaml
+  - prometheus/clusterrolebinding.yaml
+  - prometheus/configmap.yaml
+  - prometheus/pvc.yaml
+  - prometheus/deployment.yaml
+  - prometheus/service.yaml
+  - prometheus/ingress.yaml
+  - grafana/secret.yaml
+  - grafana/configmap-datasources.yaml
+  - grafana/configmap-dashboards.yaml
+  - grafana/pvc.yaml
+  - grafana/deployment.yaml
+  - grafana/service.yaml
+  - grafana/ingress.yaml
+  - kube-state-metrics/serviceaccount.yaml
+  - kube-state-metrics/clusterrole.yaml
+  - kube-state-metrics/clusterrolebinding.yaml
+  - kube-state-metrics/deployment.yaml
+  - kube-state-metrics/service.yaml
+  - node-exporter/serviceaccount.yaml
+  - node-exporter/clusterrole.yaml
+  - node-exporter/clusterrolebinding.yaml
+  - node-exporter/daemonset.yaml
+  - node-exporter/service.yaml
